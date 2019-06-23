@@ -1,0 +1,197 @@
+/* rgb(218, 120, 54); */
+
+
+.create-rec form {
+    display: grid;
+    grid-template-rows: 1fr 7vw 1fr 7vw 1fr 1fr 7vw;
+    grid-template-columns: 10vw 30vw;
+    grid-gap: 1vw;  
+    margin-left: 2vw;
+}
+
+/* Базовый контейнер табов */
+.tabs {
+	width: 100%;
+	padding: 0px;
+	margin: 0 auto;
+}
+/* Стили секций с содержанием */
+.tabs>section {
+	display: none;
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+.tabs>section>p {
+	margin: 0 0 5px;
+	line-height: 1.5;
+	color: #383838;
+	/* прикрутим анимацию */
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+/* Описываем анимацию свойства opacity */
+ 
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+/* Прячем чекбоксы */
+.tabs>input {
+	display: none;
+	position: absolute;
+}
+/* Стили переключателей вкладок (табов) */
+.tabs>label {
+	display: inline-block;
+	margin: 0 0 -1px;
+	padding: 15px 25px;
+	font-weight: 600;
+	text-align: center;
+	color: #aaa;
+	border: 0px solid #ddd;
+	border-width: 1px 1px 1px 1px;
+	background: #f1f1f1;
+	border-radius: 3px 3px 0 0;
+}
+/* Шрифт-иконки от Font Awesome в формате Unicode */
+.tabs>label:before {
+	font-family: fontawesome;
+	font-weight: normal;
+	margin-right: 10px;
+}
+/* Изменения стиля переключателей вкладок при наведении */
+ 
+.tabs>label:hover {
+	color: #888;
+	cursor: pointer;
+}
+/* Стили для активной вкладки */
+.tabs>input:checked+label {
+	color: #555;
+	border-top: 1px solid #009933;
+	border-bottom: 1px solid #fff;
+	background: #fff;
+}
+/* Активация секций с помощью псевдокласса :checked */
+#tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4, #tab5:checked~#content-tab5 {
+	display: block;
+}
+/* Убираем текст с переключателей 
+* и оставляем иконки на малых экранах
+*/
+ 
+@media screen and (max-width: 680px) {
+	.tabs>label {
+		font-size: 0;
+	}
+	.tabs>label:before {
+		margin: 0;
+		font-size: 18px;
+	}
+}
+/* Изменяем внутренние отступы 
+*  переключателей для малых экранов
+*/
+@media screen and (max-width: 400px) {
+	.tabs>label {
+		padding: 15px;
+	}
+}
+
+input,textarea, select {
+    border: 1px solid #009933;
+    width: 80%;
+}
+#addRecp {
+    margin-left: 2vw;
+    width: 10vw;
+    margin-top: 1vw;
+}
+.error {
+    margin-left: 3vw;
+    color: red;
+    margin-top: 1vw;
+}
+.subtitile {
+    color: gray;
+    margin-left: 2vw;
+    font-size: .8rem;
+}
+.success {
+	margin-left: 3vw;
+    color: rgb(59, 151, 41);
+    margin-top: 1vw;
+}
+
+.receps, .povars {
+	display: flex;
+	flex-direction: column;
+}
+.recep i, .povar i {
+	font-size: 1.6vw;
+	cursor: pointer;
+}
+.recep i:first-child:hover, .povar i:first-child:hover{
+	color: blue;
+} 
+.recep i:last-child:hover, .povar i:last-child:hover {
+	color: red;
+} 
+.recep, .povar {
+	padding: .5vw 0;
+	border-bottom: 1px dashed gray;
+}
+h3 {
+	margin-top: 1vw;
+}
+.recep .title, .povar .title {
+	color: unset;
+	cursor: pointer;
+}
+.create-less form {
+	display: grid;
+	grid-gap: 1vw;
+	padding: .5vw 0;
+	border-bottom: 1px solid rgba(202, 202, 202, 0.527);
+	grid-template-rows: 1fr;
+	grid-template-columns: 30% 70%;
+}
+.recep .row:nth-child(2) > div, .recep .row:nth-child(3) > div,  .povar form > div{
+	display: grid;
+	grid-gap: 1vw;
+	padding: .5vw 0;
+	border-bottom: 1px solid rgba(202, 202, 202, 0.527);
+	grid-template-rows: 1fr;
+	grid-template-columns: 30% 70%;
+}
+.recep > div:first-child,.povar > div:first-child  {
+	display: grid;
+	grid-template-columns: 2.5vw calc(100% - 6.5vw) 5vw;
+	grid-template-rows: 3vw;
+	align-items: center;
+}
+.nu {
+	font-size: larger;
+	margin-right: 1vw;
+}
+.recep .row:nth-child(2), .recep form, .povar form {
+	display: none;
+}
+

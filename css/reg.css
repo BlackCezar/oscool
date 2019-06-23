@@ -1,0 +1,16 @@
+.content form{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 20vw 1fr;
+}
+.content form label {
+    margin-left: 1vw;
+}
+#reg {
+    margin-left: 3vw;
+}
+.error {
+    color: red; 
+    margin: 1vw 0;
+    margin-left: 1vw;
+}

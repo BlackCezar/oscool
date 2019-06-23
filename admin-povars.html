@@ -1,0 +1,38 @@
+<section id="content-tab5">
+    <div class="create-povar mb-3">
+        <h2>Добавить повара</h2>
+        <form>
+            <label for="">ФИО*</label>
+            <input type="text" name="fio" placeholder="Иванов Иван">
+        </form>
+        <span class="subtitile">* - поля, обязательные для заполнения</span><br>
+        <button @click="createPovar($event)">Добавить</button>
+    </div>
+    <h3>Повара</h3>
+    <div class="povars">
+        <div class="povar" v-for="povar of povars">
+            <div class="row1">
+                <div class="nu">{{ povar.id }}</div>
+                <div class="title">{{ povar.fio }}</div>
+                <div class="btns">
+                    <i class="far fa-edit" @click="showFormPovar($event)"></i>
+                    <i class="far fa-trash-alt" :data-id="povar.id" @click="removePovar($event)"></i>
+                </div>
+            </div>
+            <form class="row">
+                <div class="name">
+                    <span class="desc">ФИО:</span>
+                    <input type="text" name="fio" :value="povar.fio">
+                </div>
+                <div class="hidden" v-show="false">
+                        <span class="desc">id:</span>
+                    <input type="text" name="id" :value="povar.id">
+                </div>
+                <div class="send">
+                    <span class="video"> </span>
+                    <button class="btn btn-second" @click="savePovar($event)" style="width: 10vw">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section> 

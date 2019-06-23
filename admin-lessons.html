@@ -1,0 +1,98 @@
+<section id="content-tab3">
+	<div class="create-less">
+            <h2>Добавить урок</h2>
+            <form ref="createLessonForm">
+                <label for="">Название*</label>
+                <input type="text" name="name" placeholder="Мороженое с глазурью">
+				<label for="">Дата*</label>
+				<input type="date" name="date" id="">
+				<label for="">Время*</label>
+				<input type="time" name="time" id="">
+				<label for="">Аудитория*</label>
+				<input type="number" name="audit" placeholder="301">
+				<label for="">Повар*</label>
+				<select name="povar">
+                    <option disabled value="">Выберите повара</option>
+                    <option v-for="povar of povars" :value="povar.id">{{ povar.fio }}</option>                    
+				</select>
+                </form>
+            <span class="subtitile">* - поля, обязательные для заполнения</span><br>
+            <button @click="createLesson($event)" id="addRecp">Создать</button>
+            <div class="error">{{ lessonsSettings.error }}</div>
+            <div class="success">{{ lessonsSettings.success }}</div>
+        </div>
+    </section> 
+    <section id="content-tab4">
+            <div class="receps">
+                    <div class="recep" v-for="lesson of lessons">
+                            <div class="row1">
+                              <div class="nu">{{ lesson.id }}</div>
+                              <div class="title" @click="showF($event)">{{ lesson.date }} {{ lesson.time }} {{ lesson.name }}</div>
+                              <div class="btns">
+                                  <i class="far fa-edit" @click="showS($event)"></i>
+                                  <i class="far fa-trash-alt" :data-id="lesson.id" @click="removeLesson($event)"></i>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="desc">
+                                    <span class="desc">Название:</span>
+                                  <div class="desc">
+                                      {{ lesson.name }}
+                                  </div>
+                              </div>
+                              <div class="ingridients">
+                                  <span class="ingr">Дата и время:</span>
+                                  <div class="ingr">
+                                      {{ lesson.date }} {{ lesson.time }}
+                                  </div>
+                              </div>
+                              <div class="makelist">
+                                  <span class="makelist">Кабинет:</span>
+                                  <div class="makelist">
+                                      {{ lesson.audit }}
+                                  </div>
+                              </div>
+                              <div class="lesson">
+                                  <span class="lesson">Повар:</span>
+                                  <div class="lesson">
+                                      <template v-for="povar of povars" v-if="povar.id == lesson.povar">
+                                          {{ povar.fio }}
+                                      </template>
+                                  </div>
+                              </div>
+                            </div>
+                            <form class="row">
+                              <div class="name">
+                                  <span class="desc">Название:</span>
+                                  <input type="text" name="name" :value="lesson.name">
+                              </div>
+                              <div class="hidden" v-show="false">
+                                      <span class="desc">Название:</span>
+                                      <input type="text" name="id" :value="lesson.id">
+                                  </div>
+                              <div class="desc">
+                                  <span class="desc">Дата:</span>
+                                  <input type="date" name="date" :value="lesson.date">
+                              </div>
+                              <div class="desc">
+                                  <span class="desc">Время:</span>
+                                  <input type="time" name="time" :value="lesson.time">
+                              </div>
+                              <div class="ingridients">
+                                  <span class="ingr">Кабинет:</span>
+                                  <input type="text" name="audit" :value="lesson.audit">
+                              </div>
+                              <div class="makelist">
+                                    <span class="makelist">Повар:</span>
+                                    <select name="povar">
+                                        <option v-for="povar of povars" :value="povar.id" :selected="povar.id == lesson.povar">{{ povar.fio }}</option>                    
+                                    </select>
+                              </div>
+                              <div class="send">
+                                    <span class="video"> </span>
+                                    <button class="btn btn-second" @click="saveLesson($event)" style="width: 10vw">Сохранить</button>
+                              </div>
+                            </form>
+                      </div>
+                    </div>
+	</section>    
