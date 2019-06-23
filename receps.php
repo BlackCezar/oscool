@@ -12,7 +12,7 @@ if ($_SESSION['auth'] != true) {
 <div class="con">
     <div class="user">
         <div class="likes" v-show="false" ref="userLikes"><?php 
-        $pdo = new PDO('mysql:host=kraycenter.ru;dbname=a0274741_psig;charset=utf8', 'a0274741', 'wuecpesica');
+        $pdo = new PDO('mysql:host=kraycenter.ru;dbname=a0274741_psih;charset=utf8', 'a0274741', 'wuecpesica');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $id = $_SESSION['user']['id'];
         $s = $pdo->query("SELECT * FROM users WHERE id = $id");
