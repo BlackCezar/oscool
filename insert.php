@@ -41,12 +41,13 @@ function getImgPath() {
         $name = basename($_FILES["img_src"]["name"]);
         $tmp_name = $_FILES["img_src"]["tmp_name"];
         $uploaddir = '/app/uploads/img/';
-        if (move_uploaded_file($tmp_name, $uploaddir . $name)) {
-            return "/uploads/img/" . $name;
-        } else {
-            if ($_FILES['img_src']["size"] > 0) $error = $_FILES["img_src"]["error"] || "Не загрузилось изображение";
-            return "";
-        }
+        return $tmp_name . $name;
+        // if (move_uploaded_file($tmp_name, $uploaddir . $name)) {
+        //     return "/uploads/img/" . $name;
+        // } else {
+        //     if ($_FILES['img_src']["size"] > 0) $error = $_FILES["img_src"]["error"] || "Не загрузилось изображение";
+        //     return "";
+        // }
     }
 }
 
